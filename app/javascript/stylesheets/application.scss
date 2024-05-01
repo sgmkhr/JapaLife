@@ -11,3 +11,33 @@ footer {
   bottom: 0;
   opacity: 0.5;
 }
+
+.navbar {
+  background-color: #bdb76b;
+}
+
+.welcome-btn:first-child {
+  background-color: #ffe4b5;
+}
+
+.welcome-btn:nth-child(2) {
+  background-color: #f08080;
+}
+
+.welcome-btn:last-child {
+  background-color: #b0e0e6;
+}
+
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+
+}

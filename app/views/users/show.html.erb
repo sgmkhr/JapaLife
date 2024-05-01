@@ -1,0 +1,19 @@
+<% if @user == current_user %>
+  <h2>マイページ</h2>
+<% else %>
+  <%= @user.nick_name %>さんのプロフィール
+<% end %>
+
+<%= image_tag @user.get_profile_image(100,100) %>
+
+私は、日本生活の<%= @user.get_role %>です。
+
+<%= @user.introduction %>
+
+<% if @user == current_user %>
+  <%= link_to 'プロフィール編集', edit_user_path(current_user), class: 'btn btn-sm btn-secondary' %>
+<% end %>
+
+<!--このユーザーのおすすめ投稿一覧-->
+
+<!--このユーザーの意見一覧-->

@@ -1,41 +1,39 @@
-<header class='container w-100 bg-success'>
-  <nav class='navbar navbar-expand-lg mx-auto'>
-    <%= link_to root_path class: 'navbar-brand' do %>
-      <i class="fa-solid fa-people-line"></i>Peaceful Japan Life
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li class='nav-item'>nav</li>
-          <li class='nav-item'>nav</li>
-          <li class='nav-item'>nav</li>
-          <li class='nav-item'>Profile</li>
-          <li class='nav-item'>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa-solid fa-arrow-right-from-bracket"></i>Log out
-            <% end %>
+<nav class='navbar navbar-expand-lg'>
+  <%= link_to root_path class: 'navbar-brand' do %>
+    <i class="fa-solid fa-people-line"></i>Peaceful Japan Life
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class='nav-item'>nav</li>
+        <li class='nav-item'>nav</li>
+        <li class='nav-item'>nav</li>
+        <li class='nav-item'>Profile</li>
+        <li class='nav-item'>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>Log out
+          <% end %>
+        </li>
+      <% else %>
+        <li class='nav-item'>
+          <%= link_to root_path do %>
+            <i class="fa-solid fa-house"></i>Home
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to about_path do %>
+            <i class="fa-solid fa-circle-info"></i>About
+          <% end %>
           </li>
-        <% else %>
-          <li class='nav-item'>
-            <%= link_to root_path do %>
-              <i class="fa-solid fa-house"></i>Home
-            <% end %>
-          </li>
-          <li class='nav-item'>
-            <%= link_to about_path do %>
-              <i class="fa-solid fa-circle-info"></i>About
-            <% end %>
-          </li>
-          <li class='nav-item'>
-            <%= link_to new_user_session_path do %>
-              <i class="fa-solid fa-arrow-right-to-bracket"></i>Log in
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
-</header>
+        <li class='nav-item'>
+          <%= link_to new_user_session_path do %>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>Log in
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

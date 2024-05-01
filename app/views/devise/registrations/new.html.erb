@@ -7,6 +7,11 @@
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
+  
+  <div class="field">
+    <%= f.label :nick_name %><br />
+    <%= f.text_field :nick_name %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -15,7 +20,7 @@
   
   <div class="field">
     <%= f.label :role %><br />
-    <%= f.select :role, options_for_select([['日本生活初心者','biginner'],['日本生活中級者','intermediate'],['日本生活ベテラン','veteran']]) %>
+    <%= f.select :role, options_for_select([['日本生活初心者','beginner'],['日本生活中級者','intermediate'],['日本生活ベテラン','veteran']]) %>
   </div>
 
   <div class="field">

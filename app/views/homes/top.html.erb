@@ -1,12 +1,24 @@
-<div class='container bg-secondary-subtle'>
-  <div class='row mx-auto text-center'>
-    <p><i class="fa-solid fa-people-line"></i>Welcome to Peaceful Japan Life !</br>
-    This website is for connecting between beginners and vetarans in Japan life.</p>
-  </div>
-  <div class='row mx-auto'>
-    <div class='col-md-10 col-sm-12 mx-auto'>
-      <button class='btn btn-secondary'></button><!--ここにゲストログインリンク追加予定-->
-      <%= link_to 'Click here to start', new_user_session_path, class: 'btn btn-success' %>
+<main class='container w-100'>
+  <div class='row'>
+    <div class='col-10 mx-auto'>
+      <h1 class='text-center'><i class="fa-solid fa-people-line"></i></h1>
+      <p class='text-center'>ようこそ、<strong>平和な日本生活</strong>へ！</br>
+      日本生活においての初心者の方々とベテランの方々をつなぐためのサイトです。</p>
+      <p class='text-center'>Welcome to <strong>Peaceful Japan Life</strong> !</br>
+      This website is for connecting between beginners and vetarans in Japan life.</p>
     </div>
   </div>
-</div>
+  <div class='row my-5'>
+    <div class='col-8 d-flex justify-content-around mx-auto'>
+    　<%= link_to users_guest_sign_in_path, method: :post, class: 'btn welcome-btn' do %>
+          ゲストログインはこちら</br>Click here to sign in
+    　<% end %>
+      <%= link_to new_user_session_path, class: 'btn welcome-btn' do %>
+          ログインはこちら</br>Click here to log in
+    　<% end %>
+    　<%= link_to new_user_registration_path, class: 'btn welcome-btn' do %>
+          初めての方はこちら</br>Click here to registrate
+      <% end %>
+    </div>
+  </div>
+</main>
