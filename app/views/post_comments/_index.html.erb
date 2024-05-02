@@ -3,7 +3,7 @@
     <div class='comment-box'>
       <i class="fa-solid fa-face-smile"></i> <%= recommend_place_post.user.nick_name %>さんからの返信
       <% if comment.user == current_user %>
-        <%= link_to 'コメントを削除', recommend_place_post_post_comment_path(comment.id), method: :delete, class: 'btn btn-sm destroy-btn ml-5' %>
+        <%= link_to 'コメントを削除', recommend_place_post_post_comment_path(comment.id), method: :delete, remote:true, data: {"turbolinks" => false}, class: 'btn btn-sm destroy-btn ml-5' %>
       <% end %>
       <div class='comment'>
         <p><%= comment.content %></p>
@@ -13,7 +13,7 @@
     <div class='comment-box'>
       <i class="fa-regular fa-face-smile"></i> <%= comment.user.nick_name %>さんからのコメント
       <% if comment.user == current_user %>
-        <%= link_to 'コメントを削除', recommend_place_post_post_comment_path(comment.id), method: :delete, class: 'btn btn-sm destroy-btn ml-5' %>
+        <%= link_to 'コメントを削除', recommend_place_post_post_comment_path(recommend_place_post, comment.id), method: :delete, remote:true, data: {"turbolinks" => false}, class: 'btn btn-sm destroy-btn ml-5' %>
       <% end %>
       <div class='comment'>
         <p><%= comment.content %></p>

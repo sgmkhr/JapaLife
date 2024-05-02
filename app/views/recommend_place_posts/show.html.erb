@@ -24,9 +24,13 @@
     
     <hr>
     <h4><i class="fa-regular fa-message"></i>コメント一覧</h4>
-    <%= render 'post_comments/index', recommend_place_post: @recommend_place_post %>
+    <div id='post-comments'>
+      <%= render 'post_comments/index', recommend_place_post: @recommend_place_post %>
+    </div>
     <hr>
     <h4>コメント投稿</h4>
-    <%= render 'post_comments/form', recommend_place_post: @recommend_place_post, post_comment: @post_comment, btn: 'コメント投稿' %>
+    <div>
+      <%= render 'post_comments/form', recommend_place_post: @recommend_place_post, post_comment: @post_comment, btn: 'コメント投稿' %>
+    </div>
   </div>
 </div>

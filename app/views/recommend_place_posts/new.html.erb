@@ -2,5 +2,6 @@
   <h2>日本のおすすめ新規投稿</h2>
   <div class='content-wrapper'>
     <%= render 'form', recommend_place_post: @recommend_place_post, prefectures: @prefectures, btn: '新規投稿' %>
+    <%= link_to 'おすすめ投稿一覧に戻る', recommend_place_posts_path, class: 'btn btn-sm back-btn' %>
   </div>
 </div>
