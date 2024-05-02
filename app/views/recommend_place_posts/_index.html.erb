@@ -1,0 +1,11 @@
+<% posts.each do |post| %>
+  <%= link_to recommend_place_post_path(post.id) do %>
+    <div class='card'>
+      <%= image_tag post.get_post_image(200,200) %>
+      <div class='card-body'>
+        <h5 class='card-title'><%= post.name %></h5>
+        <p><%= post.caption %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>

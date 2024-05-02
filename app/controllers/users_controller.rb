@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def ensure_correct_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to index_path, notice: '他人のユーザー情報は編集できません。'
+      redirect_to index_path, caution: '他人のユーザー情報は編集できません。'
     end
   end
 end

@@ -1,10 +1,21 @@
-<div class='menu-wrapper'>
-  <div class='menu-box'><p>おすすめを知る</p></div>
-  <div class='menu-box'><p>意見を交換する</p></div>
-  <div class='menu-box-sm'><p>仲間を探す</p></div>
-  <% unless current_user.guest_user? %>
-    <%= link_to user_path(current_user) do %>
-      <div class='menu-box-sm'><p>マイページ</p></div>
-    <% end %>
-  <% end %>
+<div class='main-wrapper'>
+  <div class='content-wrapper'>
+    <div class='menu-wrapper'>
+      <%= link_to recommend_place_posts_path do %>
+        <div class='menu-box'><p>おすすめを知る</p></div>
+      <% end %>
+      <!--リンク後ほど-->
+      <div class='menu-box'><p>意見を交換する</p></div>
+      <!---->
+      <%= link_to users_path do %>
+        <div class='menu-box-sm'><p>仲間を探す</p></div>
+      <% end %>
+      <% unless current_user.guest_user? %>
+        <%= link_to user_path(current_user) do %>
+          <div class='menu-box-sm'><p>マイページ</p></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
+

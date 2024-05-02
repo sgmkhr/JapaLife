@@ -1,0 +1,25 @@
+<%= form_with model: recommend_place_post do |f| %>
+  <div class='form-group'>
+    <%= f.label :image %>
+    <%= f.file_field :post_image, accept: 'images/*', class: 'd-block' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :caption %>
+    <%= f.text_area :caption, maxlength: 20, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :prefecture %>
+    <%= f.select :prefecture, options_for_select(prefectures), class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :introduction %>
+    <%= f.text_area :introduction, size: ' 40 x 50 ', class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.submit btn, class: 'btn submit-btn' %>
+  </div>
+<% end %>

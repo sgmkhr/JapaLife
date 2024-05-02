@@ -28,6 +28,71 @@ footer {
   background-color: #b0e0e6;
 }
 
+.submit-btn {
+  background-color: #f4a460;
+}
+
+.edit-btn {
+  background-color: #66cdaa;
+}
+
+.destroy-btn {
+  background-color: #bc8f8f;
+}
+
+.back-btn {
+  background-color: #fff0f5;
+}
+
+.main-wrapper {
+  width: 100%;
+}
+
+.main-wrapper > h2 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.content-wrapper {
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.menu-wrapper {
+  
+}
+
+.menu-box {
+  
+}
+
+.menu-box-sm {
+  
+}
+
+.post-name {
+  
+}
+
+.post-prefecture {
+  
+}
+
+.post-body {
+  
+}
+
+.post-author {
+  
+}
+
+.card {
+  width: 200px;
+}
+
+.card-body {
+  background-color: #f8f8ff;
+}
 
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {

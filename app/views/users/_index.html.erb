@@ -1,5 +1,5 @@
 <div class='d-flex justify-content-center flex-wrap'>
-  <%= users.each do |user| %>
+  <% users.each do |user| %>
     <div class='card'>
       <%= image_tag user.get_profile_image(50,50), class: 'card-img-top' %>
       <div class='card-body'>

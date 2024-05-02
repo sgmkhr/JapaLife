@@ -1,0 +1,25 @@
+<div class='main-wrapper'>
+  <h2>日本のおすすめ投稿詳細</h2>
+  <div class='content-wrapper'>
+    <h3 class='post-name'><%= @recommend_place_post.name %></h3>
+    <span class='post-prefecture'><%= @recommend_place_post.prefecture %></span>
+    <p><%= @recommend_place_post.caption %></p>
+    <hr>
+    <div class='post-body'>
+      <%= image_tag @recommend_place_post.get_post_image(200,200) %>
+      <p><%= @recommend_place_post.introduction %></p>
+    </div>
+    <hr>
+    <div class='post-author'>
+      <p><i class="fa-solid fa-user-large"></i><%= @recommend_place_post.user.nick_name %>さん</p>
+      <p><i class="fa-solid fa-flag"></i>日本生活の<%= @recommend_place_post.user.role %></p>
+    </div>
+  </div>
+</div>
+
+<% if @recommend_place_post.user == current_user %>
+  <%= link_to '編集する', edit_recommend_place_post_path(@recommend_place_post.id), class: 'btn btn-sm edit-btn' %>
+  <%= link_to '削除する', recommend_place_post_path(@recommend_place_post.id), method: :delete, class: 'btn btn-sm destroy-btn', 'data-confirm' => '本当に削除してもいいですか？' %>
+<% end %>
+
+<%= link_to 'おすすめ投稿一覧に戻る', recommend_place_posts_path, class: 'btn btn-sm back-btn' %>

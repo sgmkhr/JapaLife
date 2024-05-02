@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
+  
+  has_many :recommend_place_posts, dependent: :destroy
 
   validates :name, presence: true
   validates :nick_name, presence: true, uniqueness: true
