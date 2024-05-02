@@ -21,6 +21,7 @@ class RecommendPlacePostsController < ApplicationController
 
   def show
     @recommend_place_post = RecommendPlacePost.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit

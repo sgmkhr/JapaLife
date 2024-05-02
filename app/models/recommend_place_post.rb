@@ -2,6 +2,7 @@ class RecommendPlacePost < ApplicationRecord
   has_one_attached :post_image
   
   belongs_to :user
+  has_many :post_comments, dependent: :destroy
   
   validates :name, presence: true
   validates :caption, length: { maximum:20 }

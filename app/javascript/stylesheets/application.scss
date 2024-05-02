@@ -94,6 +94,19 @@ footer {
   background-color: #f8f8ff;
 }
 
+.comment-box {
+  padding-top: 3px;
+}
+
+.comment {
+  display: inline-block;
+  width: 90%;
+  border: 1px solid #d2b48c;
+  border-radius: 20px;
+  padding: 3px;
+  margin-bottom: 3px;
+}
+
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {
 

@@ -1,9 +1,11 @@
 <div class='main-wrapper'>
   <h2>日本のおすすめ投稿詳細</h2>
+  <%= link_to 'おすすめ投稿一覧に戻る', recommend_place_posts_path, class: 'btn btn-sm back-btn' %>
   <div class='content-wrapper'>
     <h3 class='post-name'><%= @recommend_place_post.name %></h3>
     <span class='post-prefecture'><%= @recommend_place_post.prefecture %></span>
     <p><%= @recommend_place_post.caption %></p>
+    <sm>投稿日: <%= @recommend_place_post.created_at.strftime('%Y/%m/%d') %></sm>
     <hr>
     <div class='post-body'>
       <%= image_tag @recommend_place_post.get_post_image(200,200) %>
@@ -14,12 +16,17 @@
       <p><i class="fa-solid fa-user-large"></i><%= @recommend_place_post.user.nick_name %>さん</p>
       <p><i class="fa-solid fa-flag"></i>日本生活の<%= @recommend_place_post.user.role %></p>
     </div>
+
+    <% if @recommend_place_post.user == current_user %>
+      <%= link_to '編集する', edit_recommend_place_post_path(@recommend_place_post.id), class: 'btn btn-sm edit-btn' %>
+      <%= link_to '削除する', recommend_place_post_path(@recommend_place_post.id), method: :delete, class: 'btn btn-sm destroy-btn', 'data-confirm' => '本当に削除してもいいですか？' %>
+    <% end %>
+    
+    <hr>
+    <h4><i class="fa-regular fa-message"></i>コメント一覧</h4>
+    <%= render 'post_comments/index', recommend_place_post: @recommend_place_post %>
+    <hr>
+    <h4>コメント投稿</h4>
+    <%= render 'post_comments/form', recommend_place_post: @recommend_place_post, post_comment: @post_comment, btn: 'コメント投稿' %>
   </div>
 </div>
-
-<% if @recommend_place_post.user == current_user %>
-  <%= link_to '編集する', edit_recommend_place_post_path(@recommend_place_post.id), class: 'btn btn-sm edit-btn' %>
-  <%= link_to '削除する', recommend_place_post_path(@recommend_place_post.id), method: :delete, class: 'btn btn-sm destroy-btn', 'data-confirm' => '本当に削除してもいいですか？' %>
-<% end %>
-
-<%= link_to 'おすすめ投稿一覧に戻る', recommend_place_posts_path, class: 'btn btn-sm back-btn' %>

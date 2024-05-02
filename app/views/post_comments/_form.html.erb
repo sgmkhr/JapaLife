@@ -1,0 +1,8 @@
+<%= form_with model: [recommend_place_post, post_comment] do |f| %>
+  <div class='form-group'>
+    <%= f.text_area :content, maxlength: 50, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.submit btn, class: 'btn btn-sm submit-btn' %>
+  </div>
+<% end %>
