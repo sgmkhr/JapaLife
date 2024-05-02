@@ -1,9 +1,9 @@
 <% if post_comment.favorited_by?(current_user) %>
-  <%= link_to recommend_place_post_post_comment_comment_favorite_path(recommend_place_post, post_comment), method: :delete do %>
+  <%= link_to recommend_place_post_post_comment_comment_favorite_path(recommend_place_post, post_comment), method: :delete, remote:true, data: {"turbolinks" => false} do %>
     <i class="fa-solid fa-heart"></i><%= post_comment.comment_favorites.count %>いいね
   <% end %>
 <% else %>
-  <%= link_to recommend_place_post_post_comment_comment_favorite_path(recommend_place_post, post_comment), method: :post do %>
+  <%= link_to recommend_place_post_post_comment_comment_favorite_path(recommend_place_post, post_comment), method: :post, remote:true, data: {"turbolinks" => false} do %>
     <i class="fa-regular fa-heart"></i><%= post_comment.comment_favorites.count %>いいね
   <% end %>
 <% end %>
