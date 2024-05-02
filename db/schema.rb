@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_02_075610) do
+ActiveRecord::Schema.define(version: 2024_05_02_095134) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,12 +40,30 @@ ActiveRecord::Schema.define(version: 2024_05_02_075610) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comment_favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_comment_id"], name: "index_comment_favorites_on_post_comment_id"
+    t.index ["user_id"], name: "index_comment_favorites_on_user_id"
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.integer "user_id"
     t.text "content"
     t.integer "recommend_place_post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "recommend_place_post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recommend_place_post_id"], name: "index_post_favorites_on_recommend_place_post_id"
+    t.index ["user_id"], name: "index_post_favorites_on_user_id"
   end
 
   create_table "recommend_place_posts", force: :cascade do |t|
@@ -76,4 +94,8 @@ ActiveRecord::Schema.define(version: 2024_05_02_075610) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comment_favorites", "post_comments"
+  add_foreign_key "comment_favorites", "users"
+  add_foreign_key "post_favorites", "recommend_place_posts"
+  add_foreign_key "post_favorites", "users"
 end

@@ -3,6 +3,7 @@ class RecommendPlacePost < ApplicationRecord
   
   belongs_to :user
   has_many :post_comments, dependent: :destroy
+  has_many :post_favorites, dependent: :destroy
   
   validates :name, presence: true
   validates :caption, length: { maximum:20 }
@@ -26,6 +27,10 @@ class RecommendPlacePost < ApplicationRecord
       post_image.attach(io: File.open(file_path), filename: 'default-post-image.png', content_type: 'image/png')
     end
     post_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def favorited_by?(user)
+    post_favorites.exists?(user_id: user.id)
   end
   
 end

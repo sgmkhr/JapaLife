@@ -6,6 +6,7 @@
     <span class='post-prefecture'><%= @recommend_place_post.prefecture %></span>
     <p><%= @recommend_place_post.caption %></p>
     <sm>投稿日: <%= @recommend_place_post.created_at.strftime('%Y/%m/%d') %></sm>
+    <%= render 'post_favorites/btn', recommend_place_post: @recommend_place_post %>
     <hr>
     <div class='post-body'>
       <%= image_tag @recommend_place_post.get_post_image(200,200) %>

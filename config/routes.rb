@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     post "users_guest_sign_in", to: "users/sessions#guest_sign_in"
   end
   resources :recommend_place_posts do
-    resources :post_comments, only: [:create, :destroy]
+    resource :post_favorite, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy] do
+      resource :comment_favorite, only: [:create, :destroy]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

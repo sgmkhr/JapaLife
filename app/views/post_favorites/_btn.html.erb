@@ -1,0 +1,9 @@
+<% if recommend_place_post.favorited_by?(current_user) %>
+  <%= link_to recommend_place_post_post_favorite_path(recommend_place_post), method: :delete do %>
+    <i class="fa-solid fa-heart"></i><%= recommend_place_post.post_favorites.count %>いいね
+  <% end %>
+<% else %>
+  <%= link_to recommend_place_post_post_favorite_path(recommend_place_post), method: :post do %>
+    <i class="fa-regular fa-heart"></i><%= recommend_place_post.post_favorites.count %>いいね
+  <% end %>
+<% end %>

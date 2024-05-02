@@ -8,6 +8,8 @@ class User < ApplicationRecord
   
   has_many :recommend_place_posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :post_favorites, dependent: :destroy
+  has_many :comment_favorites, dependent: :destroy
 
   validates :name, presence: true
   validates :nick_name, presence: true, uniqueness: true
