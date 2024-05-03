@@ -16,7 +16,18 @@ class RecommendPlacePostsController < ApplicationController
   end
 
   def index
-    @recommend_place_posts = RecommendPlacePost.all
+    to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    if params[:latest]
+      @recommend_place_posts = RecommendPlacePost.latest
+    elsif params[:old]
+      @recommend_place_posts = RecommendPlacePost.old
+    else
+      @recommend_place_posts = RecommendPlacePost.all.sort { |a,b|
+        b.favorites.where(created_at: from...to).size <=>
+        a.favorites.where(created_at: from...to).size
+      }
+    end
     @prefectures = RecommendPlacePost.prefectures
   end
 

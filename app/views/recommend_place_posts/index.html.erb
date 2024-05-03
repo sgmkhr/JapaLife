@@ -3,6 +3,11 @@
   <div class='content-wrapper'>
     <%= link_to '新規投稿する', new_recommend_place_post_path, class: 'btn submit-btn' %>
     <%= render 'searches/form_posts', prefectures: @prefectures %>
+    <p>
+      <%= link_to '投稿日が新しい順', recommend_place_posts_path(latest: true) %>
+      |<%= link_to '投稿日が古い順', recommend_place_posts_path(old: true) %>
+      |<%= link_to '直近１週間のいいねが多い順', recommend_place_posts_path %>
+    </p>
     <div class='d-flex flex-wrap mt-5'>
       <%= render 'index', posts: @recommend_place_posts %>
     </div>

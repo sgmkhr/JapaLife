@@ -20,7 +20,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    if params[:latest]
+      @users = User.latest
+    elsif params[:old]
+      @users = User.old
+    else
+      @users = User.all
+    end
   end
   
   private

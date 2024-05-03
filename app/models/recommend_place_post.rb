@@ -5,6 +5,9 @@ class RecommendPlacePost < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :post_favorites, dependent: :destroy
   
+  scope :latest, -> { order(created_at: :desc) }
+  scope :old, -> { order(created_at: :asc) }
+  
   validates :name, presence: true
   validates :caption, length: { maximum:20 }
   validates :introduction, length: { maximum:2000 }

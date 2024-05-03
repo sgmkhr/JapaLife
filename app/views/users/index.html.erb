@@ -2,6 +2,8 @@
   <h2>ユーザー一覧</h2>
   <div class='content-wrapper'>
     <%= render 'searches/form_user' %>
+    <p><%= link_to '登録が新しい順', users_path(latest: true) %>
+      |<%= link_to '登録が古い順', users_path(old: true) %></p>
     <div class='d-flex flex-wrap mt-5'>
       <%= render 'users/index', users: @users %>
     </div>
