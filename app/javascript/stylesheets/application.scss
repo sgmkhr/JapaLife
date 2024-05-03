@@ -44,6 +44,18 @@ footer {
   background-color: #fff0f5;
 }
 
+.role-btn {
+  background-color: #fff8dc;
+}
+
+.follow-btn {
+  background-color: #00ced1;
+}
+
+.unfollow-btn {
+  background-color: #5f9ea0;
+}
+
 .main-wrapper {
   width: 100%;
 }
@@ -88,10 +100,18 @@ footer {
 
 .card {
   width: 200px;
+  margin: 0 10px 10px 0;
 }
 
 .card-body {
   background-color: #f8f8ff;
+  height: 150px;
+}
+
+.card-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .comment-box {
@@ -105,6 +125,11 @@ footer {
   border-radius: 20px;
   padding: 3px;
   margin-bottom: 3px;
+}
+
+.relationship-box {
+  display: inline-block;
+  padding-left: 10px;
 }
 
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */

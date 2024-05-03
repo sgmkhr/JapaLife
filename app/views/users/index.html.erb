@@ -1,3 +1,10 @@
-<h2>ユーザー一覧</h2>
-<!--絞り込み機能実装する。-->
-<%= render 'users/index', users: @users %>
+<div class='main-wrapper'>
+  <h2>ユーザー一覧</h2>
+  <div class='content-wrapper'>
+    <!--絞り込み機能実装する。-->
+    <div class='d-flex flex-wrap mt-5'>
+      <%= render 'users/index', users: @users %>
+    </div>
+  </div>
+</div>
+

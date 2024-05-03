@@ -14,7 +14,9 @@
     </div>
     <hr>
     <div class='post-author'>
-      <p><i class="fa-solid fa-user-large"></i><%= @recommend_place_post.user.nick_name %>さん</p>
+      <%= link_to user_path(@recommend_place_post.user.id) do %>
+        <p><i class="fa-solid fa-user-large"></i><%= @recommend_place_post.user.nick_name %>さん</p>
+      <% end %>
       <p><i class="fa-solid fa-flag"></i>日本生活の<%= @recommend_place_post.user.role %></p>
     </div>
 

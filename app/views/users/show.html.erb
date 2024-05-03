@@ -1,21 +1,34 @@
-<% if @user == current_user %>
-  <h2>マイページ</h2>
-<% else %>
-  <%= @user.nick_name %>さんのプロフィール
-<% end %>
-
-<%= image_tag @user.get_profile_image(100,100) %>
-
-私は、日本生活の<%= @user.get_role %>です。
-
-<%= @user.introduction %>
-
-<% if @user == current_user %>
-  <%= link_to 'プロフィール編集', edit_user_path(current_user), class: 'btn btn-sm btn-secondary' %>
-<% end %>
-
-<%= link_to 'ユーザーの一覧に戻る', users_path, class: 'btn btn-sm back-btn' %>
-
-<!--このユーザーのおすすめ投稿一覧-->
-
-<!--このユーザーの意見一覧-->
+<div class='main-wrapper'>
+  <% if @user == current_user %>
+    <h2>マイページ</h2>
+  <% else %>
+    <h2><%= @user.nick_name %>さんのプロフィール</h2>
+  <% end %>
+  <div class='content-wrapper'>
+    <div class='mb-5'>
+      <%= image_tag @user.get_profile_image(200,200) %>
+      <div class='relationship-box'>
+        <div id='relationship-count'>
+        <%= render 'relationships/count', user: @user %>
+        </div>
+        <div id='relationship-btn'>
+          <%= render 'relationships/btn', user: @user %>
+        </div>
+      </div>
+    </div>
+    <p>私は、日本生活の<%= @user.get_role %>です。</p>
+    <hr>
+    <p><%= @user.introduction %></p>
+    <hr>
+    <div class='mt-5'>
+      <% if @user == current_user %>
+        <%= link_to 'プロフィール編集', edit_user_path(current_user), class: 'btn btn-sm btn-secondary' %>
+      <% end %>
+      
+      <%= link_to 'ユーザーの一覧に戻る', users_path, class: 'btn btn-sm back-btn' %>
+    </div>
+    <!--このユーザーのおすすめ投稿一覧-->
+    
+    <!--このユーザーの意見一覧-->
+  </div>
+</div>

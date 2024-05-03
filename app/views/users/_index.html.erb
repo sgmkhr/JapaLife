@@ -1,14 +1,15 @@
-<div class='d-flex justify-content-center flex-wrap'>
-  <% users.each do |user| %>
+<% users.each do |user| %>
+  <%= link_to user_path(user) do %>
     <div class='card'>
-      <%= image_tag user.get_profile_image(50,50), class: 'card-img-top' %>
+      <%= image_tag user.get_profile_image(200,200) %>
       <div class='card-body'>
-        <p class='card-title'>
-          <span><%= user.nick_name %></span>
-          <span class='btn btn-sm btn-secondary'><%= user.get_role %></span>
-        </p>
-        <p class='card-text'><%= user.introduction%></p>
-        <%= link_to '見にいく', user_path(user), class: 'btn btn-secondary' %>
+        <h5 class='card-title'>
+          <span class='btn btn-sm role-btn'><%= user.get_role %></span>
+          <span class='ml-5'><i class="fa-solid fa-users"></i><%= user.followers.count %></span>
+          <p><%= user.nick_name %></p>
+        </h5>
+        <p class='card-text'><%= user.introduction %></p>
       </div>
+    </div>
   <% end %>
-</div>
+<% end %>
