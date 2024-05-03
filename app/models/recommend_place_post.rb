@@ -18,7 +18,7 @@ class RecommendPlacePost < ApplicationRecord
     滋賀県:25,京都府:26,大阪府:27,兵庫県:28,奈良県:29,和歌山県:30,
     鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
-    福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47,その他:48
+    福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47,その他:48,指定しない:49
   }
 
   def get_post_image(width, height)
@@ -33,4 +33,31 @@ class RecommendPlacePost < ApplicationRecord
     post_favorites.exists?(user_id: user.id)
   end
   
+  def self.search_for(content, method, prefecture_number, subject)
+    if method == 'perfect'
+      if subject == 'name'
+        records = RecommendPlacePost.where(name: content)
+      elsif subject == 'caption'
+        records = RecommendPlacePost.where(caption: content)
+      else 
+        records = RecommendPlacePost.where(introduction: content)
+      end
+      unless prefecture_number == 49
+        records.where(prefecture: prefecture_number)
+      end
+      records
+    else
+      if subject == 'name'
+        records = RecommendPlacePost.where('name LIKE?', '%' + content + '%')
+      elsif subject == 'caption'
+        records = RecommendPlacePost.where('caption LIKE?', '%' + content + '%')
+      else 
+        records = RecommendPlacePost.where('introduction LIKE?', '%' + content + '%')
+      end
+      unless prefecture_number == 49
+        records.where(prefecture: prefecture_number)
+      end
+      records
+    end
+  end
 end

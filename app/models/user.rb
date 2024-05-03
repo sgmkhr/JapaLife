@@ -45,9 +45,9 @@ class User < ApplicationRecord
   end
   
   def get_role
-    if self.role = 'beginner'
+    if self.role == 'beginner'
       '初心者'
-    elsif self.role = 'intermediate'
+    elsif self.role == 'intermediate'
       '中級者'
     else 
       'ベテラン'
@@ -64,5 +64,13 @@ class User < ApplicationRecord
   
   def following?(user)
     followings.include?(user)
+  end
+  
+  def self.search_for(content, method, select_role)
+    if method == 'perfect'
+      User.where(nick_name: content, role: select_role)
+    else
+      User.where(role: select_role).where('nick_name LIKE?', '%' + content + '%')
+    end
   end
 end

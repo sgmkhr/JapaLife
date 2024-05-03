@@ -17,6 +17,7 @@ class RecommendPlacePostsController < ApplicationController
 
   def index
     @recommend_place_posts = RecommendPlacePost.all
+    @prefectures = RecommendPlacePost.prefectures
   end
 
   def show

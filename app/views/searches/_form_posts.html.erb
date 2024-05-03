@@ -1,0 +1,8 @@
+<%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field :model, value: 'recommend_place_post' %>
+  <%= f.select :subject, options_for_select({ 'タイトル' => 'name', '見出し' => 'caption', '内容' => 'introduction' }) %>
+  <%= f.select :prefecture, options_for_select(prefectures) %>
+  <%= f.select :method, options_for_select({ '完全一致' => 'perfect', '部分一致' => 'partial' }) %>
+  <%= f.text_field :content %>
+  <%= f.submit '検索' %>
+<% end %>

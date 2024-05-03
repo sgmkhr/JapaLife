@@ -1,0 +1,7 @@
+<%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field :model, value:  'user' %>
+  <%= f.select :role, options_for_select({ '指定しない' => 'all', '初心者' => 'beginner', '中級者' => 'intermediate', 'ベテラン' => 'veteran' }) %>
+  <%= f.select :method, options_for_select({ '完全一致' => 'perfect', '部分一致' => 'partial' }) %>
+  <%= f.text_field :content %>
+  <%= f.submit '検索' %>
+<% end %>

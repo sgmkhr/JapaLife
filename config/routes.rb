@@ -17,5 +17,7 @@ Rails.application.routes.draw do
       resource :comment_favorite, only: [:create, :destroy]
     end
   end
+  get 'searches/result', to: 'searches#search', as: 'search'
+  get 'searches/new', to: 'searches#new', as: 'new_search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
