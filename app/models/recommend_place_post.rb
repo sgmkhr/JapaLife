@@ -4,6 +4,7 @@ class RecommendPlacePost < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :post_favorites, dependent: :destroy
+  has_many :post_view_counts, dependent: :destroy
   
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }

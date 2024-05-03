@@ -24,8 +24,8 @@ class RecommendPlacePostsController < ApplicationController
       @recommend_place_posts = RecommendPlacePost.old
     else
       @recommend_place_posts = RecommendPlacePost.all.sort { |a,b|
-        b.favorites.where(created_at: from...to).size <=>
-        a.favorites.where(created_at: from...to).size
+        b.post_favorites.where(created_at: from...to).size <=>
+        a.post_favorites.where(created_at: from...to).size
       }
     end
     @prefectures = RecommendPlacePost.prefectures
@@ -34,6 +34,9 @@ class RecommendPlacePostsController < ApplicationController
   def show
     @recommend_place_post = RecommendPlacePost.find(params[:id])
     @post_comment = PostComment.new
+    unless PostViewCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, recommend_place_post_id: @recommend_place_post.id)
+      current_user.post_view_counts.create(recommend_place_post_id: @recommend_place_post.id)
+    end
   end
 
   def edit

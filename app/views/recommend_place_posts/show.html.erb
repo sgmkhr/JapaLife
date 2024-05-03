@@ -5,8 +5,9 @@
     <h3 class='post-name'><%= @recommend_place_post.name %></h3>
     <span class='post-prefecture'><%= @recommend_place_post.prefecture %></span>
     <p><%= @recommend_place_post.caption %></p>
-    <sm>投稿日: <%= @recommend_place_post.created_at.strftime('%Y/%m/%d') %></sm>
-    <span id='post-favorite'><%= render 'post_favorites/btn', recommend_place_post: @recommend_place_post %></span>
+    <span class='mr-3'>投稿日： <%= @recommend_place_post.created_at.strftime('%Y/%m/%d') %></span>
+    <span class='mr-3' id='post-favorite'><%= render 'post_favorites/btn', recommend_place_post: @recommend_place_post %></span>
+    <span class='ml-auto mr-3'><i class="fa-solid fa-chart-simple"></i> 閲覧された回数：<%= @recommend_place_post.post_view_counts.count %>回</span>
     <hr>
     <div class='post-body'>
       <%= image_tag @recommend_place_post.get_post_image(200,200) %>

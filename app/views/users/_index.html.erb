@@ -1,11 +1,12 @@
 <% users.each do |user| %>
   <%= link_to user_path(user) do %>
     <div class='card'>
+      <sm class='ml-auto mr-3'><i class="fa-solid fa-chart-simple"></i> <%= user.profile_viewers.count %></sm>
       <%= image_tag user.get_profile_image(200,200) %>
       <div class='card-body'>
         <h5 class='card-title'>
           <span class='btn btn-sm role-btn'><%= user.get_role %></span>
-          <span class='ml-5'><i class="fa-solid fa-users"></i><%= user.followers.count %></span>
+          <span class='ml-3 sm-text'><i class="fa-solid fa-users"></i><%= user.followers.count %>人</span>
           <p><%= user.nick_name %></p>
         </h5>
         <p class='card-text'><%= user.introduction %></p>

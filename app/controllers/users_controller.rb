@@ -17,6 +17,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    unless ProfileViewCount.where(created_at: Time.zone.now.all_day).find_by(viewer_id: current_user.id, viewed_id: @user.id)
+      current_user.active_views.create(viewed_id: @user.id)
+    end
   end
 
   def index
