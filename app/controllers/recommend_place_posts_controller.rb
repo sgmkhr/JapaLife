@@ -8,7 +8,9 @@ class RecommendPlacePostsController < ApplicationController
 
   def create
     @recommend_place_post = current_user.recommend_place_posts.new(recommend_place_post_params)
+    tag_list = params[:recommend_place_post][:tag_name].split(',')
     if @recommend_place_post.save
+      @recommend_place_post.save_tags(tag_list)
       redirect_to recommend_place_post_path(@recommend_place_post.id), notice: '新規投稿されました。'
     else
       render :new
@@ -46,7 +48,9 @@ class RecommendPlacePostsController < ApplicationController
 
   def update
     recommend_place_post = RecommendPlacePost.find(params[:id])
+    tag_list = params[:recommend_place_post][:tag_name].split(',')
     if recommend_place_post.update(recommend_place_post_params)
+      recommend_place_post.save_tags(tag_list)
       redirect_to recommend_place_post_path(recommend_place_post.id), notice: '投稿が更新されました。'
     else
       render :edit

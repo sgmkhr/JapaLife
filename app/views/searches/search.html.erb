@@ -6,10 +6,12 @@
     <% end %>
   <div class='content-wrapper'>
     <%= link_to '検索画面に戻る', new_search_path, class: 'btn sm-btn back-btn mb-5' %>
-    <% if @model == 'user' %>
-      <%= render 'users/index', users: @records %>
-    <% else %>
-      <%= render 'recommend_place_posts/index', posts: @records %>
-    <% end %>
+    <div class='d-flex flex-wrap mt-5'>
+      <% if @model == 'user'  %>
+        <%= render 'users/index', users: @records %>
+      <% else %>
+        <%= render 'recommend_place_posts/index', posts: @records %>
+      <% end %>
+    </div>
   </div>
 </div>

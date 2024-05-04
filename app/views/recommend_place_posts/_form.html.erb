@@ -16,6 +16,10 @@
     <%= f.select :prefecture, options_for_select(prefectures), class: 'form-control' %>
   </div>
   <div class='form-group'>
+    <%= f.label :tag %><span>※複数入力する場合は、スペースは空けずに「,」で区切ってください。</span>
+    <%= f.text_field :tag_name, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
     <%= f.label :introduction %>
     <%= f.text_area :introduction, size: ' 20 x 30 ', class: 'form-control' %>
   </div>

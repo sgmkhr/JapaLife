@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def post_index
+    @user = User.find(params[:user_id])
+    @recommend_place_posts = @user.recommend_place_posts
+  end
+  
   private
   
   def user_params

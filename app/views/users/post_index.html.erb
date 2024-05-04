@@ -1,0 +1,9 @@
+<div class='main-wrapper'>
+  <h2><%= @user.nick_name %>さんの投稿一覧</h2>
+  <div class='content-wrapper'>
+    <div class='d-flex flex-wrap mt-5'>
+      <%= render 'recommend_place_posts/index', posts: @recommend_place_posts %>
+    </div>
+    <%= link_to 'ユーザー詳細画面に戻る', user_path(@user), class: 'btn btn-sm back-btn' %>
+  </div>
+</div>

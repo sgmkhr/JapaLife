@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings', to: 'relationships#followings', as: 'followings'
     get 'followers', to: 'relationships#followers', as: 'followers'
+    get 'index', to: 'users#post_index', as: 'post_index'
   end
   devise_scope :user do
     post "users_guest_sign_in", to: "users/sessions#guest_sign_in"

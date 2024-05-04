@@ -11,10 +11,20 @@
     <hr>
     <div class='post-body'>
       <%= image_tag @recommend_place_post.get_post_image(200,200) %>
+      <div class='tag-box'>
+        <% if @recommend_place_post.tags.exists? %>
+          <% @recommend_place_post.tags.each do |tag| %>
+            <%= link_to search_path( :model => 'tag', :method => 'perfect', :content => tag.name), class: 'btn btn-sm tag-btn' do %>
+              <i class="fa-solid fa-tag"></i><%= tag.name %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
       <p><%= @recommend_place_post.introduction %></p>
     </div>
     <hr>
     <div class='post-author'>
+      <%= image_tag @recommend_place_post.user.get_profile_image(30,30) %>
       <%= link_to user_path(@recommend_place_post.user.id) do %>
         <p><i class="fa-solid fa-user-large"></i><%= @recommend_place_post.user.nick_name %>さん</p>
       <% end %>
