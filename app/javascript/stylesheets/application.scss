@@ -116,12 +116,22 @@ footer {
   
 }
 
-.card {
+.post-card {
   width: 200px;
   margin: 0 10px 10px 0;
 }
 
-.card-body {
+.post-card-body {
+  background-color: #f8f8ff;
+  height: 150px;
+}
+
+.user-card {
+  width: 150px;
+  margin: 0 10px 10px 0;
+}
+
+.user-card-body {
   background-color: #f8f8ff;
   height: 150px;
 }
@@ -148,10 +158,6 @@ footer {
 .relationship-box {
   display: inline-block;
   padding-left: 10px;
-}
-
-.sm-text {
-  font-weight: none;
 }
 
 .message-box {

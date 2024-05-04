@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
-        <li class='nav-item ml-2'>
+        <li class='nav-item'>
           <%= link_to index_path do %>
             <i class="fa-solid fa-house"></i>Menu
           <% end %>
@@ -21,6 +21,11 @@
         <li class='nav-item ml-2'>
           <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fa-solid fa-arrow-right-from-bracket"></i>Log out
+          <% end %>
+        </li>
+        <li class='nav-item ml-2'>
+          <%= link_to user_path(current_user) do %>
+            <%= image_tag current_user.get_profile_image(30,30), class: 'rounded-circle' %>
           <% end %>
         </li>
       <% else %>
