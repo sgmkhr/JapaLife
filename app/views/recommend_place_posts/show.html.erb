@@ -11,7 +11,7 @@
     <hr>
     <div class='post-body'>
       <%= image_tag @recommend_place_post.get_post_image(200,200) %>
-      <div class='tag-box'>
+      <div>
         <% if @recommend_place_post.tags.exists? %>
           <% @recommend_place_post.tags.each do |tag| %>
             <%= link_to search_path( :model => 'tag', :method => 'perfect', :content => tag.name), class: 'btn btn-sm tag-btn' do %>

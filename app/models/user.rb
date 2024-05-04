@@ -21,6 +21,10 @@ class User < ApplicationRecord
   has_many :active_views, class_name: 'ProfileViewCount', foreign_key: 'viewer_id', dependent: :destroy
   has_many :passive_views, class_name: 'ProfileViewCount', foreign_key: 'viewed_id', dependent: :destroy
   has_many :profile_viewers, through: :passive_views, source: :viewer
+  
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }

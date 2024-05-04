@@ -70,6 +70,10 @@ footer {
   background-color: #fffacd;
 }
 
+.chat-btn {
+  background-color: #66cdaa;
+}
+
 .main-wrapper {
   width: 100%;
 }
@@ -150,10 +154,30 @@ footer {
   font-weight: none;
 }
 
-.tag-box {
-  
+.message-box {
+  width: 80%;
+  min-height: 100px;
+  padding: 30px 20px;
+  margin: 0 auto;
+  background-color: #f5deb3;
+  border-radius: 20px;
 }
 
+.message {
+  width: 60%;
+  padding: 5px;
+  background-color: #fffafa;
+  border-radius: 10px;
+}
+
+.new-message-box {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.new-message-submit-btn {
+  text-align: center;
+}
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {
 

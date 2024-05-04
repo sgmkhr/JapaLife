@@ -1,0 +1,32 @@
+<div class='main-wrapper'>
+  <h2><%= @user.nick_name %>さんとのチャット</h2>
+  <div class='content-wrapper'>
+    <div class='message-box'>
+      <% @chats.each do |chat| %>
+        <% if chat.user_id == current_user.id %>
+          <div class='message ml-auto mt-2'>
+            <p><%= chat.message %></p>
+          </div>
+        <% else %>
+          <div class='message mr-auto mt-2'>
+            <p><%= chat.message %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class='errors'>
+      <%= render 'layouts/errors', obj: @chat %>
+    </div>
+    <%= form_with model: @chat, data: {remote: true} do |f| %>
+      <div class='form-group new-message-box mt-5'>
+        <%= f.text_field :message, class: 'form-control' %>
+      </div>
+      <%= f.hidden_field :room_id, :value => @room.id %>
+      <div class='form-group new-message-submit-btn'>
+        <%= f.submit '送信', class: 'btn btn-sm submit-btn mt-3' %>
+      </div>
+    <% end %>
+    <%= link_to 'ユーザーのプロフィールに戻る', user_path(@user.id), class: 'btn btn-sm back-btn' %>
+  </div>
+
+</div>
