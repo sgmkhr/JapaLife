@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'chats/index'
-  get 'chats/show'
   devise_for :users
   root to: 'homes#top'
   get 'about', to: 'homes#about', as: 'about'
