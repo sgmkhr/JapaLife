@@ -1,5 +1,12 @@
 <div class='main-wrapper'>
-  <div class='content-wrapper'>
-    <p>チャットルーム一覧</p>
+  <h2>チャットルーム一覧</h2>
+  <div class='content-wrapper p-5'>
+    <% @users.each do |user| %>
+      <%= link_to chat_path(user.id) do %>
+        <div class='chat-group mx-auto mb-3'>
+          <p><%= user.nick_name %>さんとのチャットルーム</p>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
