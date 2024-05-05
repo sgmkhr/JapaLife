@@ -7,6 +7,8 @@ class RecommendPlacePost < ApplicationRecord
   has_many :post_view_counts, dependent: :destroy
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+  
+  has_many :notifications, as: :notifiable, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }
@@ -77,6 +79,12 @@ class RecommendPlacePost < ApplicationRecord
     new_tags.each do |new_name|
       post_tag = Tag.find_or_create_by(name: new_name)
       self.tags << post_tag
+    end
+  end
+  
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
     end
   end
 end

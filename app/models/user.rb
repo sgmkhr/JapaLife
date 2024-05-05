@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :user_rooms
   has_many :chats
   has_many :rooms, through: :user_rooms
+  
+  has_many :notifications, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }
@@ -86,4 +88,5 @@ class User < ApplicationRecord
       User.where(role: select_role).where('nick_name LIKE?', '%' + content + '%')
     end
   end
+    
 end
