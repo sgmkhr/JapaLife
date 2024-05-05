@@ -1,5 +1,4 @@
 class ChatsController < ApplicationController
-  before_action :ensure_matching_user, only: [:index]
   
   def show
     @user = User.find(params[:id])
@@ -27,7 +26,9 @@ class ChatsController < ApplicationController
   
   def create
     @chat = current_user.chats.new(chat_params)
-    render :validater unless @chat.save
+    unless @chat.save
+      render :validater
+    end
   end
   
   def index
@@ -45,13 +46,6 @@ class ChatsController < ApplicationController
   
   def chat_params
     params.require(:chat).permit(:message, :room_id)
-  end
-  
-  def ensure_matching_user
-    user = User.find(params[:user_id])
-    unless user == current_user
-      redirect_to index_path
-    end
   end
   
 end

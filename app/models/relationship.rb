@@ -15,7 +15,7 @@ class Relationship < ApplicationRecord
   end
   
   def notification_path
-    user_path(followed_id)
+    user_path(follower_id)
   end
   
 end

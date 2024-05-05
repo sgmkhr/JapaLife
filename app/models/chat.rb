@@ -9,8 +9,8 @@ class Chat < ApplicationRecord
   validates :message, presence: true, length: { maximum:140 }
   
   after_create do
-    chat.room.user_rooms.each do |user_room|
-      if user_room.user_id != current_user.id
+    room.user_rooms.each do |user_room|
+      if user_room.user_id != user.id
         create_notification(user_id: user_room.user_id)
       end
     end
@@ -21,6 +21,6 @@ class Chat < ApplicationRecord
   end
   
   def notification_path
-    user_chats_path(current_user)
+    chat_path(user)
   end
 end
