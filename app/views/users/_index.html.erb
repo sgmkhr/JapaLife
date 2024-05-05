@@ -1,7 +1,7 @@
 <% users.each do |user| %>
   <%= link_to user_path(user) do %>
     <div class='card user-card'>
-      <%= image_tag user.get_profile_image(150,150) %>
+      <%= image_tag user.get_profile_image(150,150), class: 'img-profile' %>
       <div class='card-body user-card-body'>
         <h5 class='card-title'>
           <span class='btn btn-sm role-btn'><%= user.get_role %></span>

@@ -8,43 +8,68 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
-        <li class='nav-item'>
+        <li class='nav-item dropdown'>
+          <button class='btn dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            <% if current_user.notifications.where(read: false).any? %>
+              <i class="fa-solid fa-bell"></i>
+            <% else %>
+              <i class="fa-regular fa-bell"></i>
+            <% end %>
+          </button>
+          <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+            <span class='dropdown-item'>未読<%= current_user.notifications.where(read: false).count %>件</span>
+            <% if current_user.notifications.where(read: false).any? %>
+              <small class='dropdown-item disabled'>直近5件の未読通知を表示しています</small>
+              <% current_user.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+                <%= link_to notification.message, notification, method: :patch, class: 'dropdown-item' %>
+              <% end %>
+            <% else %>
+              <span class='dropdown-item disabled'>未読の通知はありません。</span>
+            <% end %>
+          </div>
+        </li>
+        <li class='nav-item ml-3 pt-1'>
           <%= link_to index_path do %>
             <i class="fa-solid fa-house"></i>Menu
           <% end %>
         </li>
-        <li class='nav-item ml-2'>
+        <li class='nav-item ml-3 pt-1'>
           <%= link_to user_path(current_user) do %>
             <i class="fa-regular fa-user"></i>My page
           <% end %>
         </li>
-        <li class='nav-item ml-2'>
+        <li class='nav-item ml-3 pt-1'>
           <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fa-solid fa-arrow-right-from-bracket"></i>Log out
           <% end %>
         </li>
-        <li class='nav-item ml-2'>
+        <li class='nav-item ml-3 pt-1'>
+          <%= link_to user_chats_path(current_user) do %>
+            <i class="fa-regular fa-message"></i>chats
+          <% end %>
+        </li>
+        <li class='nav-item ml-3 mt-1'>
           <%= link_to user_path(current_user) do %>
             <%= image_tag current_user.get_profile_image(30,30), class: 'rounded-circle' %>
           <% end %>
         </li>
       <% else %>
-        <li class='nav-item'>
+        <li class='nav-item pt-1'>
           <%= link_to root_path do %>
             <i class="fa-solid fa-house"></i>Home
           <% end %>
         </li>
-        <li class='nav-item ml-2'>
+        <li class='nav-item ml-3 pt-1'>
           <%= link_to about_path do %>
             <i class="fa-solid fa-circle-info"></i>About
           <% end %>
         </li>
-        <li class='nav-item ml-2'>
+        <li class='nav-item ml-3 pt-1'>
           <%= link_to new_user_session_path do %>
             <i class="fa-solid fa-arrow-right-to-bracket"></i>Log in
           <% end %>
         </li>
-        <li class='nav-item ml-2'>
+        <li class='nav-item ml-3 pt-1'>
           <%= link_to new_user_registration_path do %>
             <i class="fa-solid fa-user-plus"></i>Sign up
           <% end %>

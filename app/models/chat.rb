@@ -1,4 +1,6 @@
 class Chat < ApplicationRecord
+  include Notifiable
+  
   belongs_to :user
   belongs_to :room
   
@@ -12,5 +14,13 @@ class Chat < ApplicationRecord
         create_notification(user_id: user_room.user_id)
       end
     end
+  end
+  
+  def notification_message
+    "新しくチャットが届きました。"
+  end
+  
+  def notification_path
+    user_chats_path(current_user)
   end
 end

@@ -1,4 +1,6 @@
 class RecommendPlacePost < ApplicationRecord
+  include Notifiable
+  
   has_one_attached :post_image
 
   belongs_to :user
@@ -83,8 +85,17 @@ class RecommendPlacePost < ApplicationRecord
   end
   
   after_create do
-    user.followers.each do |follower|
-      notifications.create(user_id: follower.id)
+    records = user.followers.map do |follower|
+      notifications.new(user_id: follower.id)
     end
+    Notification.import records
+  end
+  
+  def notification_message
+    "フォローしている#{user.nick_name}さんが新規投稿しました。"
+  end
+  
+  def notification_path
+    recommend_place_post_path(self)
   end
 end

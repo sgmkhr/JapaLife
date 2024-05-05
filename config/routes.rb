@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'followings', to: 'relationships#followings', as: 'followings'
     get 'followers', to: 'relationships#followers', as: 'followers'
     get 'index', to: 'users#post_index', as: 'post_index'
+    get 'chats', to: 'chats#index', as: 'chats'
   end
   devise_scope :user do
     post "users_guest_sign_in", to: "users/sessions#guest_sign_in"
@@ -21,5 +22,6 @@ Rails.application.routes.draw do
   get 'searches/result', to: 'searches#search', as: 'search'
   get 'searches/new', to: 'searches#new', as: 'new_search'
   resources :chats, only: [:create, :show]
+  resources :notifications, only: [:update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

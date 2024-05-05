@@ -1,6 +1,6 @@
 <div class='main-wrapper'>
   <% if @user == current_user %>
-    <h2>マイページ</h2>
+    <h2>マイページ<small>　/ニックネーム: <%= @user.nick_name %></small></h2>
   <% else %>
     <h2><%= @user.nick_name %>さんのプロフィール</h2>
   <% end %>

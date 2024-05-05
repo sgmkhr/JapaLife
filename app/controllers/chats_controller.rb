@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  before_action :ensure_matching_user, only: [:index]
+  
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
@@ -20,10 +22,22 @@ class ChatsController < ApplicationController
     render :validater unless @chat.save
   end
   
+  def index
+    @user = User.find(params[:user_id])
+    @rooms = @user.rooms
+  end
+  
   private
   
   def chat_params
     params.require(:chat).permit(:message, :room_id)
+  end
+  
+  def ensure_matching_user
+    user = User.find(params[:user_id])
+    unless user == current_user
+      redirect_to index_path
+    end
   end
   
 end
