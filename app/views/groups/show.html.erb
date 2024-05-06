@@ -5,6 +5,7 @@
       <p>表題：<%= @group.name %></p>
       <%= image_tag @group.get_group_image(200,200) %>
       <p><%= @group.introduction %></p>
+      <%= link_to '表題一覧へ戻る', category_groups_path(@category.id), class: 'btn btn-sm back-btn' %>
       <% if @group.is_owned_by?(current_user) %>
         <%= link_to '編集する', edit_category_group_path(@category.id, @group.id), class: 'btn btn-sm edit-btn' %>
         <%= link_to 'この表題グループを削除する', category_group_path(@category.id, @group.id), method: :delete, class: 'btn btn-sm destroy-btn' %>

@@ -1,4 +1,4 @@
-<%= from_with model: group do |f| %>
+<%= form_with model: [category, group] do |f| %>
   <%= f.hidden_field :owner_id, :value => current_user.id %>
   <div class='form-group'>
     <label>表題：</label><br>
@@ -15,3 +15,4 @@
   <div class='form-group'>
     <%= f.submit btn, class: 'btn btn-sm submit-btn' %>
   </div>
+<% end %>

@@ -18,6 +18,6 @@ class Group < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no-group-img.jpg')
       group_image.attach(io: File.open(file_path), filename: 'default-group-image.jpg', content_type: 'image/jpeg')
     end
-    post_image.variant(resize_to_limit: [width, height]).processed
+    group_image.variant(resize_to_limit: [width, height]).processed
   end
 end

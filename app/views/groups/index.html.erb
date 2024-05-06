@@ -2,11 +2,12 @@
   <h2>カテゴリー「<%= @category.name %>」の表題一覧</h2>
   <div class='content-wrapper'>
     <%= link_to '新しく表題を作る', new_category_group_path(@category.id), class: 'btn btn-sm new-group-btn' %>
+    <%= link_to 'カテゴリーに戻る', categories_path, class: 'btn btn-sm back-btn' %>
     <hr class='my-5'>
     <% @groups.each do |group| %>
       <p><%= group.name %></p>
       <small><%= group.introduction %></small>
-      <%= link_to 'この表題に参加',category_group_path(@category.id, group.id), class: 'btn submit-btn' %>
+      <%= link_to 'この表題に参加',category_group_path(@category.id, group.id), class: 'btn btn-sm submit-btn mt-2' %>
       <hr class='my-5'>
     <% end %>
   </div>

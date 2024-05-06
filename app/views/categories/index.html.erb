@@ -1,5 +1,6 @@
 <div class='main-wrapper'>
   <h2>カテゴリー</h2>
+  <p class='text-center'>意見を集いたい、意見を知りたい、<br>カテゴリーを選んでください。</p>
   <div class='content-wrapper'>
     <div>
       <%= form_with model: @category do |f| %>
@@ -9,7 +10,7 @@
     </div>
     <div class='mt-5 d-flex flex-wrap'>
       <% @categories.each do |category| %>
-        <%= link_to category_groups_path(category.id) %>
+        <%= link_to category_groups_path(category.id) do %>
           <div class='category-box'>
             <p class='category-title'><%= category.name %></p>
           </div>
