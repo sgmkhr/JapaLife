@@ -27,6 +27,8 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
   
   has_many :notifications, dependent: :destroy
+  
+  has_many :group_users, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }

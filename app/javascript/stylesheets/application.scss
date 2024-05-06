@@ -60,7 +60,7 @@ footer {
   background-color: #fff8dc;
 }
 
-.follow-btn {
+.follow-btn, .new-group-btn {
   background-color: #00ced1;
 }
 
@@ -253,6 +253,19 @@ footer {
   width: 60%;
   height: 30px;
   border-radius: 30px;
+}
+
+.category-box {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border: solid 1px #a9a9a9;
+  border-radius: 20px;
+}
+
+.category-title {
+  text-align: center;
+  line-height: 200px;
 }
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {

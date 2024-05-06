@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'groups/index'
+  get 'groups/show'
+  get 'groups/edit'
+  get 'categories/index'
   devise_for :users
   root to: 'homes#top'
   get 'about', to: 'homes#about', as: 'about'
@@ -23,5 +27,8 @@ Rails.application.routes.draw do
   get 'searches/new', to: 'searches#new', as: 'new_search'
   resources :chats, only: [:create, :show]
   resources :notifications, only: [:update]
+  resources :categories, only: [:index, :create] do
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

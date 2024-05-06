@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_05_064611) do
+ActiveRecord::Schema.define(version: 2024_05_06_035424) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 2024_05_05_064611) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "chats", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
@@ -58,6 +64,28 @@ ActiveRecord::Schema.define(version: 2024_05_05_064611) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_comment_id"], name: "index_comment_favorites_on_post_comment_id"
     t.index ["user_id"], name: "index_comment_favorites_on_user_id"
+  end
+
+  create_table "group_categories", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "group_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.text "introduction"
+    t.integer "owner_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "notifications", force: :cascade do |t|

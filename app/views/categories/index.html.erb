@@ -1,0 +1,20 @@
+<div class='main-wrapper'>
+  <h2>カテゴリー</h2>
+  <div class='content-wrapper'>
+    <div>
+      <%= form_with model: @category do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit 'カテゴリー追加', class: 'btn btn-sm submit-btn' %>
+      <% end %>
+    </div>
+    <div class='mt-5 d-flex flex-wrap'>
+      <% @categories.each do |category| %>
+        <%= link_to category_groups_path(category.id) %>
+          <div class='category-box'>
+            <p class='category-title'><%= category.name %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
