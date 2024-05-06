@@ -6,8 +6,17 @@
     <hr class='my-5'>
     <% @groups.each do |group| %>
       <p><%= group.name %></p>
-      <small><%= group.introduction %></small>
-      <%= link_to 'この表題に参加',category_group_path(@category.id, group.id), class: 'btn btn-sm submit-btn mt-2' %>
+      <small><%= group.introduction %></small><br>
+      <%= link_to category_group_path(@category.id, group.id), class: 'btn btn-sm submit-btn mt-2' do %>
+        <% if group.is_owned_by?(current_user) %>
+          自分が作成した表題
+        <% elsif group.includes_user?(current_user) %>
+          参加中
+        <% else %>
+          この表題に参加
+        <% end %>
+      <% end %><br>
+      <small><%= group.users.count %>名が参加中</small>
       <hr class='my-5'>
     <% end %>
   </div>

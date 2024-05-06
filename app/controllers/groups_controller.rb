@@ -23,6 +23,9 @@ class GroupsController < ApplicationController
   def show
     @category = Category.find(params[:category_id])
     @group = Group.find(params[:id])
+    unless @group.includes_user?(current_user)
+      current_user.group_users.create(group_id: params[:id])
+    end
   end
 
   def edit

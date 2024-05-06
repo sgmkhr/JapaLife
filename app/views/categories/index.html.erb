@@ -13,6 +13,7 @@
         <%= link_to category_groups_path(category.id) do %>
           <div class='category-box'>
             <p class='category-title'><%= category.name %></p>
+            <small>表題数: <%= category.groups.count %></small>
           </div>
         <% end %>
       <% end %>

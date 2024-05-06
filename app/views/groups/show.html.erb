@@ -9,6 +9,8 @@
       <% if @group.is_owned_by?(current_user) %>
         <%= link_to '編集する', edit_category_group_path(@category.id, @group.id), class: 'btn btn-sm edit-btn' %>
         <%= link_to 'この表題グループを削除する', category_group_path(@category.id, @group.id), method: :delete, class: 'btn btn-sm destroy-btn' %>
+      <% else %>
+        <%= link_to 'この表題から参加を外れる', category_group_group_users_path(@category.id, @group.id), method: :delete, class: 'btn btn-sm destroy-btn' %>
       <% end %>
     </div>
     <hr>

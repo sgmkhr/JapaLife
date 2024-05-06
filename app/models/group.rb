@@ -20,4 +20,8 @@ class Group < ApplicationRecord
     end
     group_image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def includes_user?(user)
+    group_users.exists?(user_id: user.id)
+  end
 end
