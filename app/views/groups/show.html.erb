@@ -5,6 +5,14 @@
       <p>表題：<%= @group.name %></p>
       <%= image_tag @group.get_group_image(200,200) %>
       <p><%= @group.introduction %></p>
+      <hr>
+      参加者:
+      <% @group.users.each do |user| %>
+        <%= link_to user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(20,20), class: 'rounded-circle' %>
+        <% end %>
+      <% end %>
+      <hr>
       <%= link_to '表題一覧へ戻る', category_groups_path(@category.id), class: 'btn btn-sm back-btn' %>
       <% if @group.is_owned_by?(current_user) %>
         <%= link_to '編集する', edit_category_group_path(@category.id, @group.id), class: 'btn btn-sm edit-btn' %>
@@ -12,8 +20,17 @@
       <% else %>
         <%= link_to 'この表題から参加を外れる', category_group_group_users_path(@category.id, @group.id), method: :delete, class: 'btn btn-sm destroy-btn' %>
       <% end %>
+      <hr>
     </div>
-    <hr>
-    <!--コメント欄-->
+    <div>
+      <%= form_with model: [@category, @group, @group_comment] do |f| %>
+        <%= f.text_area :comment, class: 'form-control' %>
+        <%= f.submit '意見コメント', class: 'btn btn-sm submit-btn mt-2' %>
+      <% end %>
+      <hr>
+      <div>
+        <%= render 'group_comments/index', group: @group, category: @category %>
+      </div>
+    </div>
   </div>
 </div>

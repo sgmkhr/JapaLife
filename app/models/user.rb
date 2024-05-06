@@ -29,6 +29,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   
   has_many :group_users, dependent: :destroy
+  has_many :group_comments, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }

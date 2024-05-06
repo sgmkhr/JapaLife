@@ -267,13 +267,41 @@ footer {
   text-align: center;
   line-height: 200px;
 }
+
+.group-comment-wrapper {
+  display: flex;
+}
+
+.group-comment {
+  border: solid 1px #a9a9a9;
+  border-radius: 20px;
+  width: 85%;
+}
+
+.my-group-comment {
+  background-color: rgba(240,230,140,0.5);
+}
+
+.group-comment-time {
+  width: 15%;
+}
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {
 
 }
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width:768px) {
-
+  .group-comment-wrapper {
+    display: block;
+  }
+  
+  .group-comment {
+    width: 100%;
+  }
+  
+  .group-comment-time {
+    width: 100%;
+  }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {

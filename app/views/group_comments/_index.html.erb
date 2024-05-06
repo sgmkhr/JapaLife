@@ -1,0 +1,15 @@
+<% group.group_comments.latest.each do |comment| %>
+  <div class='m-3 group-comment-wrapper'>
+    <div class='group-comment-time'><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br> by <%= comment.user.nick_name %>さん</div>
+    <% if comment.user_id == current_user.id %>
+      <div class='group-comment my-group-comment'>
+        <p class='ml-3'><%= comment.comment %></p>
+      </div>
+      <%= link_to '削除', category_group_group_comment_path(category.id, group.id, comment.id), method: :delete, class: 'btn btn-sm destroy-btn ml-2', 'data-confirm' => '本当にこのコメントを削除しますか？' %>
+    <% else %>
+      <div class='group-comment'>
+        <p class='ml-3'><%= comment.comment %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

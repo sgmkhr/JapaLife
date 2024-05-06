@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_06_035424) do
+ActiveRecord::Schema.define(version: 2024_05_06_071338) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(version: 2024_05_06_035424) do
     t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "group_comments", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.integer "user_id", null: false
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_comments_on_group_id"
+    t.index ["user_id"], name: "index_group_comments_on_user_id"
   end
 
   create_table "group_users", force: :cascade do |t|
@@ -200,6 +210,8 @@ ActiveRecord::Schema.define(version: 2024_05_06_035424) do
   add_foreign_key "chats", "users"
   add_foreign_key "comment_favorites", "post_comments"
   add_foreign_key "comment_favorites", "users"
+  add_foreign_key "group_comments", "groups"
+  add_foreign_key "group_comments", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "post_favorites", "recommend_place_posts"
   add_foreign_key "post_favorites", "users"
