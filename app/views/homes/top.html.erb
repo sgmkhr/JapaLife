@@ -9,15 +9,15 @@
     </div>
   </div>
   <div class='row my-5'>
-    <div class='col-8 d-flex justify-content-around mx-auto'>
-    　<%= link_to users_guest_sign_in_path, method: :post, class: 'btn welcome-btn' do %>
-          ゲストログインはこちら</br>Click here to sign in
+    <div class='col-8 d-flex justify-content-center mx-auto'>
+    　<%= link_to users_guest_sign_in_path, method: :post, class: 'btn welcome-btn mr-4' do %>
+          ゲストログイン</br>Sign in
     　<% end %>
       <%= link_to new_user_session_path, class: 'btn welcome-btn' do %>
-          ログインはこちら</br>Click here to log in
+          ログイン</br>Log in
     　<% end %>
-    　<%= link_to new_user_registration_path, class: 'btn welcome-btn' do %>
-          初めての方はこちら</br>Click here to registrate
+    　<%= link_to new_user_registration_path, class: 'btn welcome-btn ml-2' do %>
+          初めて</br>Registration
       <% end %>
     </div>
   </div>

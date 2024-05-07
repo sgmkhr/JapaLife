@@ -11,10 +11,12 @@
           <div class='message ml-auto mt-2'>
             <p><%= chat.message %></p>
           </div>
+          <p class='text-right'><%= chat.created_at.strftime('%y/%m/%d %H時%M分') %></p>
         <% else %>
           <div class='message mr-auto mt-2'>
             <p><%= chat.message %></p>
           </div>
+          <p class='mr-auto'><%= chat.created_at.strftime('%y/%m/%d %H時%M分') %></p>
         <% end %>
       <% end %>
     </div>
