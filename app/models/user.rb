@@ -17,19 +17,22 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_many :post_view_counts, dependent: :destroy
-  
+
   has_many :active_views, class_name: 'ProfileViewCount', foreign_key: 'viewer_id', dependent: :destroy
   has_many :passive_views, class_name: 'ProfileViewCount', foreign_key: 'viewed_id', dependent: :destroy
   has_many :profile_viewers, through: :passive_views, source: :viewer
-  
+
   has_many :user_rooms
   has_many :chats
   has_many :rooms, through: :user_rooms
-  
+
   has_many :notifications, dependent: :destroy
-  
+
   has_many :group_users, dependent: :destroy
   has_many :group_comments, dependent: :destroy
+
+  has_many :post_saves, dependent: :destroy
+  has_many :saved_posts, through: :post_saves, source: :recommend_place_post
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }
@@ -91,5 +94,5 @@ class User < ApplicationRecord
       User.where(role: select_role).where('nick_name LIKE?', '%' + content + '%')
     end
   end
-    
+
 end

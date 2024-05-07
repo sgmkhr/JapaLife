@@ -4,7 +4,7 @@
     <%= link_to user_path(@user.id), class: 'btn btn-sm chat-btn' do %>
       <%= @user.nick_name %>さんのプロフィールへ
     <% end %>
-    <%= link_to 'チャットルーム一覧へ', chat_path(@user.id), class: 'btn btn-sm submit-btn' %>
+    <%= link_to 'チャットルーム一覧へ', user_chats_path(current_user.id), class: 'btn btn-sm submit-btn' %>
     <div class='message-box mt-5'>
       <% @chats.each do |chat| %>
         <% if chat.user_id == current_user.id %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'post_saves/index'
   get 'groups/index'
   get 'groups/show'
   get 'groups/edit'
@@ -13,12 +14,14 @@ Rails.application.routes.draw do
     get 'followers', to: 'relationships#followers', as: 'followers'
     get 'index', to: 'users#post_index', as: 'post_index'
     get 'chats', to: 'chats#index', as: 'chats'
+    get 'saves', to: 'post_saves#index', as: 'saves'
   end
   devise_scope :user do
     post "users_guest_sign_in", to: "users/sessions#guest_sign_in"
   end
   resources :recommend_place_posts do
     resource :post_favorite, only: [:create, :destroy]
+    resource :post_saves, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy] do
       resource :comment_favorite, only: [:create, :destroy]
     end

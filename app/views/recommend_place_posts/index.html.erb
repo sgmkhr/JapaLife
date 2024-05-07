@@ -2,6 +2,9 @@
   <h2>日本のおすすめ投稿一覧</h2>
   <div class='content-wrapper'>
     <%= link_to '新規投稿する', new_recommend_place_post_path, class: 'btn submit-btn' %>
+    <%= link_to user_saves_path(current_user), class: 'btn btn-sm' do %>
+      <i class="fa-solid fa-bookmark"></i>保存一覧
+    <% end %>
     <%= render 'searches/form_posts', prefectures: @prefectures %>
     <p>
       <%= link_to '投稿日が新しい順', recommend_place_posts_path(latest: true) %>
