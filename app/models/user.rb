@@ -11,15 +11,15 @@ class User < ApplicationRecord
   has_many :post_favorites, dependent: :destroy
   has_many :comment_favorites, dependent: :destroy
 
-  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_many :post_view_counts, dependent: :destroy
 
-  has_many :active_views, class_name: 'ProfileViewCount', foreign_key: 'viewer_id', dependent: :destroy
-  has_many :passive_views, class_name: 'ProfileViewCount', foreign_key: 'viewed_id', dependent: :destroy
+  has_many :active_views, class_name: "ProfileViewCount", foreign_key: "viewer_id", dependent: :destroy
+  has_many :passive_views, class_name: "ProfileViewCount", foreign_key: "viewed_id", dependent: :destroy
   has_many :profile_viewers, through: :passive_views, source: :viewer
 
   has_many :user_rooms
@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :nick_name, presence: true, uniqueness: true
-  validates :introduction, length: { maximum:50 }
+  validates :introduction, length: { maximum: 50 }
   validates :role, presence: true
 
   GUEST_USER_EMAIL = "guest@example.com"
@@ -47,9 +47,9 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = 'guestuser'
-      user.nick_name = 'guest_user'
-      user.role = 'begginer'
+      user.name = "guestuser"
+      user.nick_name = "guest_user"
+      user.role = "begginer"
     end
   end
 
@@ -59,19 +59,19 @@ class User < ApplicationRecord
 
   def get_profile_image(width, height)
     unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      file_path = Rails.root.join("app/assets/images/no_image.jpg")
+      profile_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
   def get_role
-    if self.role == 'beginner'
-      '初心者'
-    elsif self.role == 'intermediate'
-      '中級者'
+    if self.role == "beginner"
+      "初心者"
+    elsif self.role == "intermediate"
+      "中級者"
     else
-      'ベテラン'
+      "ベテラン"
     end
   end
 
@@ -88,11 +88,10 @@ class User < ApplicationRecord
   end
 
   def self.search_for(content, method, select_role)
-    if method == 'perfect'
+    if method == "perfect"
       User.where(nick_name: content, role: select_role)
     else
-      User.where(role: select_role).where('nick_name LIKE?', '%' + content + '%')
+      User.where(role: select_role).where("nick_name LIKE?", "%" + content + "%")
     end
   end
-
 end

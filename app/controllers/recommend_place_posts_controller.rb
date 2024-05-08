@@ -8,10 +8,10 @@ class RecommendPlacePostsController < ApplicationController
 
   def create
     @recommend_place_post = current_user.recommend_place_posts.new(recommend_place_post_params)
-    tag_list = params[:recommend_place_post][:tag_name].split(',')
+    tag_list = params[:recommend_place_post][:tag_name].split(",")
     if @recommend_place_post.save
       @recommend_place_post.save_tags(tag_list)
-      redirect_to recommend_place_post_path(@recommend_place_post.id), notice: '新規投稿されました。'
+      redirect_to recommend_place_post_path(@recommend_place_post.id), notice: "新規投稿されました。"
     else
       render :new
     end
@@ -25,7 +25,7 @@ class RecommendPlacePostsController < ApplicationController
     elsif params[:old]
       @recommend_place_posts = RecommendPlacePost.old.page(params[:page])
     else
-      @recommend_place_posts = RecommendPlacePost.all.sort { |a,b|
+      @recommend_place_posts = RecommendPlacePost.all.sort { |a, b|
         b.post_favorites.where(created_at: from...to).size <=>
         a.post_favorites.where(created_at: from...to).size
       }
@@ -49,10 +49,10 @@ class RecommendPlacePostsController < ApplicationController
 
   def update
     recommend_place_post = RecommendPlacePost.find(params[:id])
-    tag_list = params[:recommend_place_post][:tag_name].split(',')
+    tag_list = params[:recommend_place_post][:tag_name].split(",")
     if recommend_place_post.update(recommend_place_post_params)
       recommend_place_post.save_tags(tag_list)
-      redirect_to recommend_place_post_path(recommend_place_post.id), notice: '投稿が更新されました。'
+      redirect_to recommend_place_post_path(recommend_place_post.id), notice: "投稿が更新されました。"
     else
       render :edit
     end
@@ -60,18 +60,17 @@ class RecommendPlacePostsController < ApplicationController
 
   def destroy
     RecommendPlacePost.find(params[:id]).destroy
-    redirect_to recommend_place_posts_path, notice: '投稿を削除しました。'
+    redirect_to recommend_place_posts_path, notice: "投稿を削除しました。"
   end
 
   private
-
-  def recommend_place_post_params
-    params.require(:recommend_place_post).permit(:name, :caption, :introduction, :post_image).merge(prefecture: params[:recommend_place_post][:prefecture].to_i)
-  end
-
-  def ensure_matching_author
-    unless current_user.id == RecommendPlacePost.find(params[:id]).user_id
-      redirect_to recommend_place_posts_path, caution: '他人の投稿は編集できません。'
+    def recommend_place_post_params
+      params.require(:recommend_place_post).permit(:name, :caption, :introduction, :post_image).merge(prefecture: params[:recommend_place_post][:prefecture].to_i)
     end
-  end
+
+    def ensure_matching_author
+      unless current_user.id == RecommendPlacePost.find(params[:id]).user_id
+        redirect_to recommend_place_posts_path, caution: "他人の投稿は編集できません。"
+      end
+    end
 end

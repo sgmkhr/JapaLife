@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
     @group = category.groups.new(group_params)
     if @group.save
       GroupCategory.create(category_id: category.id, group_id: @group.id)
-      redirect_to category_group_path(category.id, @group.id), notice: '新しく表題が作成されました。'
+      redirect_to category_group_path(category.id, @group.id), notice: "新しく表題が作成されました。"
     else
       render :new
     end
@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
     category = Category.find(params[:category_id])
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to category_group_path(category.id, @group.id), notice: '表題の内容が更新されました。'
+      redirect_to category_group_path(category.id, @group.id), notice: "表題の内容が更新されました。"
     else
       render :edit
     end
@@ -50,15 +50,14 @@ class GroupsController < ApplicationController
   end
 
   private
-
-  def ensure_correct_user
-    group = Group.find(params[:id])
-    unless group.owner_id == current_user.id
-      redirect_to category_groups_path
+    def ensure_correct_user
+      group = Group.find(params[:id])
+      unless group.owner_id == current_user.id
+        redirect_to category_groups_path
+      end
     end
-  end
 
-  def group_params
-    params.require(:group).permit(:name, :introduction, :owner_id, :group_image)
-  end
+    def group_params
+      params.require(:group).permit(:name, :introduction, :owner_id, :group_image)
+    end
 end

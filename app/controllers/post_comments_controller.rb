@@ -5,16 +5,15 @@ class PostCommentsController < ApplicationController
     @post_comment.recommend_place_post_id = @recommend_place_post.id
     @post_comment.save
   end
-  
+
   def destroy
     @post_comment = PostComment.find(params[:id])
     @post_comment.destroy
     @recommend_place_post = RecommendPlacePost.find(params[:recommend_place_post_id])
   end
-  
+
   private
-  
-  def post_comment_params
-    params.require(:post_comment).permit(:content)
-  end
+    def post_comment_params
+      params.require(:post_comment).permit(:content)
+    end
 end

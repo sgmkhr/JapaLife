@@ -16,5 +16,5 @@
 # end
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.irregular 'post_save', 'post_saves'
+  inflect.irregular "post_save", "post_saves"
 end

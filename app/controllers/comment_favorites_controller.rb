@@ -6,7 +6,7 @@ class CommentFavoritesController < ApplicationController
     comment_favorite = current_user.comment_favorites.new(post_comment_id: @post_comment.id)
     comment_favorite.save
   end
-  
+
   def destroy
     @recommend_place_post = RecommendPlacePost.find(params[:recommend_place_post_id])
     @post_comment = PostComment.find(params[:post_comment_id])

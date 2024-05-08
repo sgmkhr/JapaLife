@@ -15,8 +15,7 @@ class GroupCommentsController < ApplicationController
   end
 
   private
-
-  def group_comment_params
-    params.require(:group_comment).permit(:comment)
-  end
+    def group_comment_params
+      params.require(:group_comment).permit(:comment)
+    end
 end

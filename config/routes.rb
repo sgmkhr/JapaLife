@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  get 'post_saves/index'
-  get 'groups/index'
-  get 'groups/show'
-  get 'groups/edit'
-  get 'categories/index'
+  get "post_saves/index"
+  get "groups/index"
+  get "groups/show"
+  get "groups/edit"
+  get "categories/index"
   devise_for :users
-  root to: 'homes#top'
-  get 'about', to: 'homes#about', as: 'about'
-  get 'index', to: 'homes#index', as: 'index'
+  root to: "homes#top"
+  get "about", to: "homes#about", as: "about"
+  get "index", to: "homes#index", as: "index"
   resources :users, only: [:edit, :update, :show, :index] do
     resource :relationships, only: [:create, :destroy]
-    get 'followings', to: 'relationships#followings', as: 'followings'
-    get 'followers', to: 'relationships#followers', as: 'followers'
-    get 'index', to: 'users#post_index', as: 'post_index'
-    get 'chats', to: 'chats#index', as: 'chats'
-    get 'saves', to: 'post_saves#index', as: 'saves'
+    get "followings", to: "relationships#followings", as: "followings"
+    get "followers", to: "relationships#followers", as: "followers"
+    get "index", to: "users#post_index", as: "post_index"
+    get "chats", to: "chats#index", as: "chats"
+    get "saves", to: "post_saves#index", as: "saves"
   end
   devise_scope :user do
     post "users_guest_sign_in", to: "users/sessions#guest_sign_in"
@@ -26,8 +26,8 @@ Rails.application.routes.draw do
       resource :comment_favorite, only: [:create, :destroy]
     end
   end
-  get 'searches/result', to: 'searches#search', as: 'search'
-  get 'searches/new', to: 'searches#new', as: 'new_search'
+  get "searches/result", to: "searches#search", as: "search"
+  get "searches/new", to: "searches#new", as: "new_search"
   resources :chats, only: [:create, :show, :destroy]
   resources :notifications, only: [:update]
   resources :categories, only: [:index, :create] do
