@@ -11,7 +11,10 @@
           <div class='message ml-auto mt-2'>
             <p><%= chat.message %></p>
           </div>
-          <p class='text-right'><%= chat.created_at.strftime('%y/%m/%d %H時%M分') %></p>
+          <p class='text-right'>
+            <%= chat.created_at.strftime('%y/%m/%d %H時%M分') %>
+            <%= link_to '削除', chat_path(chat.id), method: :delete, class: 'btn btn-sm destroy-btn' %>
+          </p>
         <% else %>
           <div class='message mr-auto mt-2'>
             <p><%= chat.message %></p>

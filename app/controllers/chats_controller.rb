@@ -42,6 +42,11 @@ class ChatsController < ApplicationController
     end
   end
   
+  def destroy
+    Chat.find(params[:id]).destroy
+    redirect_to request.referer
+  end
+  
   private
   
   def chat_params

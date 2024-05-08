@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
   get 'searches/result', to: 'searches#search', as: 'search'
   get 'searches/new', to: 'searches#new', as: 'new_search'
-  resources :chats, only: [:create, :show]
+  resources :chats, only: [:create, :show, :destroy]
   resources :notifications, only: [:update]
   resources :categories, only: [:index, :create] do
     resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
