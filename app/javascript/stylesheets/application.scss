@@ -156,22 +156,6 @@ footer {
   background-color: rgba(233,150,122,0.5);
 }
 
-.post-name {
-  
-}
-
-.post-prefecture {
-  
-}
-
-.post-body {
-  
-}
-
-.post-author {
-  
-}
-
 .post-card {
   width: 200px;
   height: 300px;
@@ -299,10 +283,7 @@ footer {
 .group-comment-time {
   width: 15%;
 }
-/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-@media screen and (max-width:1024px) {
 
-}
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width:768px) {
   .group-comment-wrapper {
@@ -316,8 +297,4 @@ footer {
   .group-comment-time {
     width: 100%;
   }
-}
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {
-
 }

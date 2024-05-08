@@ -2,8 +2,8 @@
   <h2>日本のおすすめ投稿詳細</h2>
   <%= link_to 'おすすめ投稿一覧に戻る', recommend_place_posts_path, class: 'btn btn-sm back-btn' %>
   <div class='content-wrapper'>
-    <h3 class='post-name'><%= @recommend_place_post.name %></h3>
-    <span class='post-prefecture'><%= @recommend_place_post.prefecture %></span>
+    <h3><%= @recommend_place_post.name %></h3>
+    <span><%= @recommend_place_post.prefecture %></span>
     <% if current_user != @recommend_place_post.user %>
       <% if @recommend_place_post.post_saved_by?(current_user) %>
         <%= link_to recommend_place_post_post_saves_path(@recommend_place_post), method: :delete do %>
@@ -20,7 +20,7 @@
     <span class='mr-3' id='post-favorite'><%= render 'post_favorites/btn', recommend_place_post: @recommend_place_post %></span>
     <span class='ml-auto mr-3'><i class="fa-solid fa-chart-simple"></i> 閲覧数：<%= @recommend_place_post.post_view_counts.count %>回</span>
     <hr>
-    <div class='post-body'>
+    <div>
       <%= image_tag @recommend_place_post.get_post_image(200,200) %>
       <div>
         <% if @recommend_place_post.tags.exists? %>
@@ -34,7 +34,7 @@
       <p><%= @recommend_place_post.introduction %></p>
     </div>
     <hr>
-    <div class='post-author'>
+    <div>
       <%= image_tag @recommend_place_post.user.get_profile_image(30,30) %>
       <%= link_to user_path(@recommend_place_post.user.id) do %>
         <p><i class="fa-solid fa-user-large"></i><%= @recommend_place_post.user.nick_name %>さん</p>
