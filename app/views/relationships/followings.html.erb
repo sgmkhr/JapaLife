@@ -1,8 +1,11 @@
 <div class='main-wrapper'>
-  <h2><%= @user.nick_name %>さんがフォローしてるユーザー一覧</h2>
+  <h2><%= @user.nick_name %>さんのフォローユーザー</h2>
   <div class='content-wrapper'>
+    <%= link_to 'ユーザーページへ戻る', user_path(@user), class: 'btn btn-sm back-btn' %>
     <% if @users.exists? %>
-      <%= render 'users/index', users: @users %>
+      <div class='d-flex flex-wrap mt-5'>
+        <%= render 'users/index', users: @users %>
+      </div>
     <% else %>
       <p>ユーザーはいません。</p>
     <% end %>

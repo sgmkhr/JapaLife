@@ -4,7 +4,7 @@
       <i class="fa-solid fa-face-smile"></i> <%= recommend_place_post.user.nick_name %>さんからの返信
       <span id='comment-favorite-<%= comment.id %>'><%= render 'comment_favorites/btn', post_comment: comment, recommend_place_post: recommend_place_post %></span>
       <% if comment.user == current_user %>
-        <%= link_to 'コメントを削除', recommend_place_post_post_comment_path(recommend_place_post, comment.id), method: :delete, remote:true, data: {"turbolinks" => false}, class: 'btn btn-sm destroy-btn ml-5' %>
+        <span><%= link_to '削除', recommend_place_post_post_comment_path(recommend_place_post, comment.id), method: :delete, remote:true, data: {"turbolinks" => false}, class: 'btn btn-sm destroy-btn ml-5' %></span>
       <% end %>
       <div class='comment'>
         <p><%= comment.content %></p>
@@ -15,7 +15,7 @@
       <i class="fa-regular fa-face-smile"></i> <%= comment.user.nick_name %>さんからのコメント
       <span id='comment-favorite-<%= comment.id %>'><%= render 'comment_favorites/btn', post_comment: comment, recommend_place_post: recommend_place_post %></span>
       <% if comment.user == current_user %>
-        <%= link_to 'コメントを削除', recommend_place_post_post_comment_path(recommend_place_post, comment.id), method: :delete, remote:true, data: {"turbolinks" => false}, class: 'btn btn-sm destroy-btn ml-5' %>
+        <span><%= link_to '削除', recommend_place_post_post_comment_path(recommend_place_post, comment.id), method: :delete, remote:true, data: {"turbolinks" => false}, class: 'btn btn-sm destroy-btn ml-5' %></span>
       <% end %>
       <div class='comment'>
         <p><%= comment.content %></p>

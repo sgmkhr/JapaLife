@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   
   def post_index
     @user = User.find(params[:user_id])
-    @recommend_place_posts = @user.recommend_place_posts
+    @recommend_place_posts = @user.recommend_place_posts.page(params[:page])
   end
   
   private
