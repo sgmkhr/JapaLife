@@ -24,11 +24,11 @@ class UsersController < ApplicationController
 
   def index
     if params[:latest]
-      @users = User.latest
+      @users = User.latest.page(params[:page])
     elsif params[:old]
-      @users = User.old
+      @users = User.old.page(params[:page])
     else
-      @users = User.all
+      @users = User.all.page(params[:page])
     end
   end
   

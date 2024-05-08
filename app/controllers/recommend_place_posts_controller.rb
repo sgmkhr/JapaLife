@@ -21,14 +21,15 @@ class RecommendPlacePostsController < ApplicationController
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
     if params[:latest]
-      @recommend_place_posts = RecommendPlacePost.latest
+      @recommend_place_posts = RecommendPlacePost.latest.page(params[:page])
     elsif params[:old]
-      @recommend_place_posts = RecommendPlacePost.old
+      @recommend_place_posts = RecommendPlacePost.old.page(params[:page])
     else
       @recommend_place_posts = RecommendPlacePost.all.sort { |a,b|
         b.post_favorites.where(created_at: from...to).size <=>
         a.post_favorites.where(created_at: from...to).size
       }
+      @recommend_place_posts = Kaminari.paginate_array(@recommend_place_posts).page(params[:page])
     end
     @prefectures = RecommendPlacePost.prefectures
   end
