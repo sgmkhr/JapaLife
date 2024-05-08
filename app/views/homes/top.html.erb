@@ -9,14 +9,14 @@
     </div>
   </div>
   <div class='row my-5'>
-    <div class='col-8 d-flex justify-content-center mx-auto'>
-    　<%= link_to users_guest_sign_in_path, method: :post, class: 'btn welcome-btn mr-4' do %>
+    <div class='col-8 d-flex justify-content-center flex-wrap mx-auto'>
+    　<%= link_to users_guest_sign_in_path, method: :post, class: 'btn welcome-btn m-4' do %>
           ゲストログイン</br>Sign in
     　<% end %>
-      <%= link_to new_user_session_path, class: 'btn welcome-btn' do %>
+      <%= link_to new_user_session_path, class: 'btn welcome-btn m-4' do %>
           ログイン</br>Log in
     　<% end %>
-    　<%= link_to new_user_registration_path, class: 'btn welcome-btn ml-2' do %>
+    　<%= link_to new_user_registration_path, class: 'btn welcome-btn m-4' do %>
           初めて</br>Registration
       <% end %>
     </div>

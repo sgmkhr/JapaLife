@@ -8,7 +8,7 @@ class PostSavesController < ApplicationController
   end
 
   def index
-    @saved_posts = current_user.saved_posts
+    @saved_posts = current_user.saved_posts.page(params[:page])
   end
 
   def destroy

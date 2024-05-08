@@ -9,7 +9,7 @@
     <p>
       <%= link_to '投稿日が新しい順', recommend_place_posts_path(latest: true) %>
       |<%= link_to '投稿日が古い順', recommend_place_posts_path(old: true) %>
-      |<%= link_to '直近１週間のいいねが多い順', recommend_place_posts_path %>
+      |<%= link_to '直近１週間のいいね多い順', recommend_place_posts_path %>
     </p>
     <div class='d-flex flex-wrap mt-5'>
       <%= render 'index', posts: @recommend_place_posts %>
